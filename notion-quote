@@ -1,0 +1,56 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        #quote {
+            margin-top: 100px;
+            font-size: 24px;
+        }
+        #author {
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="quote"></div>
+    <div id="author"></div>
+
+    <script>
+        const quotes = [
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "Life is what happens when you're busy making other plans.", author: "John Lennon" },
+            { text: "In the end, it's not the years in your life that count. It's the life in your years.", author: "Abraham Lincoln" },
+            { text: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky" },
+            { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela" }
+        ];
+
+        const quoteElement = document.getElementById('quote');
+        const authorElement = document.getElementById('author');
+
+        function generateRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const randomQuote = quotes[randomIndex];
+            quoteElement.textContent = '"' + randomQuote.text + '"';
+            authorElement.textContent = "- " + randomQuote.author;
+        }
+
+        // Initial quote generation
+        generateRandomQuote();
+
+        // Update the quote every hour
+        setInterval(generateRandomQuote, 3600000); // 3600000 milliseconds = 1 hour
+    </script>
+</body>
+</html>
